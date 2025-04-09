@@ -123,6 +123,8 @@ cd ~/scratch
 git clone https://github.com/CrystalShann/CLIP-seq-tutorial.git
 ```
 
+** NOTE: REMEMBER TO CHANGE THE DIRECTORIES TO REFLECT WHERE YOUR FILES ARE LOCATED BEFORE SUBMITTING JOBS
+
 1. To run ultraplex, we need to first prepare a csv file detailing the barcode. An example could be:
 ```bash
 NNNNTCCACNNNNNN:Sample1_fmr1_no_xlink
@@ -148,7 +150,6 @@ An example commmand can be found in
 ```bash
 ~/scratch/CLIP-seq-tutorial/scripts/nextflow_run.sh
 ```
-** NOTE: REMEMBER TO CHANGE TO DIRECTORIES TO REFLECT WHERE YOUR FILES ARE LOCATED
 
 If you are running the command for the first time, you need to first generate the genome index
 
@@ -156,6 +157,18 @@ If you are running the command for the first time, you need to first generate th
 # replace the "--star_index" with "--save_index"
 - --star_index '/home/crystal/scratch/genome/STAR_index/STAR_dmel-all-chromosome-r6.61'
 + --save_index true
+```
+
+For any subsequent runs with genome index generated, you may use the provided script directly
+
+To submit a job on the server
+```bash
+# submit a job
+sbatch nextflow_run.sh
+# check the status of the job (this will also output the job id)
+squeue -u $USER
+# to cancel a submitted job
+scancel <job-id>  
 ```
 
 After running the command, it will create many folders containing the analysis results, `xlinks` folder contains the crosslink sites in BED file format, and this is the file we will be using for all of the downstream analysis.
@@ -167,12 +180,16 @@ An example commmand can be found in
 ```
 
 4. To segment the genome into genomic regions (required for PEKA)
+An example commmand can be found in
+```bash
+~/scratch/CLIP-seq-tutorial/scripts/icount_run.sh
+```
 
-
-
-
-
-
+5. To identify motifs using PEKA
+An example commmand can be found in
+```bash
+~/scratch/CLIP-seq-tutorial/scripts/peka_run.sh
+```
 
 
 
