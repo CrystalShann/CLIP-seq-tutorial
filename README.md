@@ -71,10 +71,64 @@ module load python/3.7.9
 cd ~/
 mkdir envs
 python3.7 -m venv ~/envs/ultraplex
-pip install ultraplex
-# activate the environment every time you want to use it, the above installation steps only needs to be done once 
+# activate the environment every time you want to use it, the installation steps only needs to be done once
+# i.e: run source ~/envs/ultraplex/bin/activate everytime you want to use ultraplex
 source ~/envs/ultraplex/bin/activate 
+pip install ultraplex 
 ```
+
+To install Clippy
+```bash
+cd ~/scratch
+git clone https://github.com/ulelab/clippy.git
+cd clippy
+module load StdEnv/2020
+module load python/3.9.6
+python3.9 -m venv ~/envs/clippy
+source ~/envs/clippy/bin/activate
+pip install .
+pip install numpy pandas scipy matplotlib dash==1.20.0 dash-bootstrap-components==0.11.3 werkzeug==2.0.0 pybedtools numpydoc bs4 percy pytest pytest-cov pytest-selenium
+```
+
+To install iCount-Mini
+
+Note: This software has many dependency issues with the Compute Canada server; it is recommended that you install the software locally using Miniconda
+
+if you do NOT have miniconda installed on your local machine, install miniconda by running the following commands. Skip this step if you already have miniconda installed
+```bash
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
+chmod +x Miniconda3-latest-*.sh
+./Miniconda3-latest-*.sh
+source ~/.bashrc
+```
+
+Now you can proceed with installing iCount-Mini within an conda environment. (You can learn more about conda environments [here](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html) )
+
+```bash
+conda create --name icount-mini python=3.9
+# activate the environment everytime you want to use it
+conda activate icount-mini
+pip install --upgrade -r requirements-rtd.txt -e .
+```
+
+To install PEKA
+
+```bash
+cd ~/scratch
+git clone https://github.com/ulelab/peka.git
+cd peka
+module spider python/3.10.2
+module load python/3.10.2
+python3.10 -m venv ~/envs/peka
+pip install git+https://github.com/ulelab/peka@main
+```
+
+
+
+
+
+
+
 
 
 
