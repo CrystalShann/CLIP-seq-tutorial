@@ -2,15 +2,6 @@
 
 This tutorial is intended for processing of iiCLIP data following nf-core/CLIP-seq pipeline
 
-
-## Clone the Repository
-
-To clone this repository onto your local machine, run the following command in your terminal:
-
-```bash
-git clone https://github.com/CrystalShann/CLIP-seq-tutorial.git
-```
-
 ## Download Drosophila reference genome and genome annotation files
 
 1. Navigate to [Ensemble](https://ftp.ensembl.org/pub/release-113/fasta/drosophila_melanogaster/)
@@ -122,6 +113,62 @@ module load python/3.10.2
 python3.10 -m venv ~/envs/peka
 pip install git+https://github.com/ulelab/peka@main
 ```
+
+## CLIP-seq analysis
+Now we are ready to proceed with the actual CLIP analysis!
+
+To clone this repository onto your local machine, run the following command in your terminal:
+```bash
+cd ~/scratch
+git clone https://github.com/CrystalShann/CLIP-seq-tutorial.git
+```
+
+1. To run ultraplex, we need to first prepare a csv file detailing the barcode. An example could be:
+```bash
+NNNNTCCACNNNNNN:Sample1_fmr1_no_xlink
+NNNNCCGGANNNNNN:Sample2_fmr1_xlink
+NNNNAGGCANNNNNN:Sample3_me31b_flag
+NNNNGAATANNNNNN:Sample4_me31b_flag_fmr1_rnai
+```
+To create a new file in terminal
+```
+nanos samplesheet.csv
+```
+  
+2. To run nextflow, we need to first prepare a samplesheet (details can be found [here](https://nf-co.re/clipseq/1.0.0/docs/usage/))
+An example samplesheet would be:
+```bash
+sample,fastq
+Sample2_fmr1_xlink,/home/crystal/scratch/Me31B_Fmr1_KD_library1/demultiplex/ultraplex_demux_Sample2_fmr1_xlink.fastq.gz
+Sample3_me31b_flag,/home/crystal/scratch/Me31B_Fmr1_KD_library1/demultiplex/ultraplex_demux_Sample3_me31b_flag.fastq.gz
+Sample4_me31b_flag_fmr1_rnai,/home/crystal/scratch/Me31B_Fmr1_KD_library1/demultiplex/ultraplex_demux_Sample4_me31b_flag_fmr1_rnai.fastq.gz
+```
+
+An example commmand can be found in
+```bash
+~/scratch/CLIP-seq-tutorial/scripts/nextflow_run.sh
+```
+** NOTE: REMEMBER TO CHANGE TO DIRECTORIES TO REFLECT WHERE YOUR FILES ARE LOCATED
+
+If you are running the command for the first time, you need to first generate the genome index
+
+```diff
+# replace the "--star_index" with "--save_index"
+- --star_index '/home/crystal/scratch/genome/STAR_index/STAR_dmel-all-chromosome-r6.61'
++ --save_index true
+```
+
+After running the command, it will create many folders containing the analysis results, `xlinks` folder contains the crosslink sites in BED file format, and this is the file we will be using for all of the downstream analysis.
+
+3. Identify peaks from crosslink sites using Clippy
+An example commmand can be found in
+```bash
+~/scratch/CLIP-seq-tutorial/scripts/call_peaks_clippy_run.sh
+```
+
+4. To segment the genome into genomic regions (required for PEKA)
+
+
 
 
 
