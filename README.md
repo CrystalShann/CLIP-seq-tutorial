@@ -45,7 +45,7 @@ Note: This is intented for running the analysis on Compute Canada Server
 1. Log in to the server by typing the following command into the terminal
 
 ``` bash
-<username>@cedar.computecanda.ca
+<username>@cedar.computecanada.ca
 ```
 
 2. Install the softwares by creating python virtual environments
