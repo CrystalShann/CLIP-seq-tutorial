@@ -21,12 +21,10 @@ wget https://ftp.ensembl.org/pub/release-113/gtf/drosophila_melanogaster/Drosoph
 ## List of softwares required for running CLIP-seq analysis
 
 1. [nf-core/clipseq](https://nf-co.re/clipseq/1.0.0/)
-
 This is a modular bioinformatics pipeline that identifies crosslink sites for iCLIP data. This will output crosslink sites in BED file format
 
 
-2. [Clippy](https://github.com/ulelab/clippy)
-
+3. [Clippy](https://github.com/ulelab/clippy)
 Clippy enables peaks calling from the crosslink sites, it will output peaks in BED file format
 
 3. [iCount-Mini](https://github.com/ulelab/iCount-Mini)
