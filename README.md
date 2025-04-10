@@ -9,7 +9,7 @@ This tutorial is intended for processing of iiCLIP data following nf-core/CLIP-s
 2. Download the reference genome
 
 ```bash
-wget https://ftp.ensembl.org/pub/release-113/fasta/drosophila_melanogaster/dna/Drosophila_melanogaster.BDGP6.46.dna_rm.toplevel.fa.gz
+wget https://ftp.ensembl.org/pub/release-113/fasta/drosophila_melanogaster/dna/Drosophila_melanogaster.BDGP6.46.dna.toplevel.fa.gz
 ```
 
 3. Download the GTF file; this is a text file that describes genes and transcripts annotation for a genome
