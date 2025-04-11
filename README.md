@@ -109,6 +109,7 @@ cd peka
 module spider python/3.10.2
 module load python/3.10.2
 python3.10 -m venv ~/envs/peka
+source ~/envs/peka/bin/activate
 pip install git+https://github.com/ulelab/peka@main
 ```
 
