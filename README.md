@@ -132,13 +132,32 @@ pip install biopython
 ```
 
 Run umi_extract.sh first to extract the UMI to the header, and then run run_move_umi.sh to move the extracted UMI to the end of the header
+
 For the umi_extract.sh script, you need to change the input and output directory to reflect your own file path
 ```bash
 for example, these lines needs to be changed to reflect your own file name
 output_dir="/home/crystal/scratch/clip-seq/me31b/UMI_moved"
 input_dir="/home/crystal/scratch/clip-seq/me31b/adapters_removed"
-"${input_dir}"/me31b.read.1.adapterTrim.round2.fastq.gz         # for this specific line, ${input_dir} is a variable that points to the input_dir you specified earlier. You only need to change the second part. (ie: if your file is named read1.fastq.gz, you can change this line to "${input_dir}"/read1.fastq.gz
+"${input_dir}"/me31b.read.1.adapterTrim.round2.fastq.gz
+# for this specific line, ${input_dir} is a variable that points to the input_dir you specified earlier. You only need to 
+# change the second part. (ie: if your file is named read1.fastq.gz, you can change this line to "${input_dir}"/read1.fastq.gz
 ```
+Once you are done making the changes, you can submit the job by running
+```bash
+sbatch umi_extract.sh
+```
+
+After extracting the UMI, the UMI will be part of the read header. However, in order for the fastq format to be compatible with nextflow, we need to further process the fastq file so that the UMI is moved to the end of the read header the separated by "_"
+To do this, you first need to modify the move_umi.py script to change the file path to your own directories
+```bash
+input_file = "/home/crystal/scratch/clip-seq/me31b/UMI_moved/me31b.read.1.adapterTrim.round2.umi_extracted.fastq.gz"
+output_file = "/home/crystal/scratch/clip-seq/me31b/UMI_moved/me31b.read.1.umi_moved.fastq.gz"
+```
+Submit the job by running
+```bash
+sbatch run_move_umi.sh
+```
+
 
 ** NOTE: REMEMBER TO CHANGE THE DIRECTORIES TO REFLECT WHERE YOUR FILES ARE LOCATED BEFORE SUBMITTING JOBS
 
