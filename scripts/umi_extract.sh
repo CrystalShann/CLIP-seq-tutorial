@@ -7,7 +7,7 @@
 #SBATCH --time=12:00:00                   # Maximum runtime (12 hours)
 
 # Activate the virtual environment
-source /home/crystal/tools/bin/activate
+source ~/tools/bin/activate
 
 # Create the output directory if it doesn't exist
 output_dir="/home/crystal/scratch/clip-seq/me31b/UMI_moved"
