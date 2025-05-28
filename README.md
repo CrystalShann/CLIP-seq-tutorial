@@ -135,7 +135,7 @@ Run umi_extract.sh first to extract the UMI to the header, and then run run_move
 
 For the umi_extract.sh script, you need to change the input and output directory to reflect your own file path
 ```bash
-for example, these lines needs to be changed to reflect your own file name
+# for example, these lines needs to be changed to reflect your own file name
 output_dir="/home/crystal/scratch/clip-seq/me31b/UMI_moved"
 input_dir="/home/crystal/scratch/clip-seq/me31b/adapters_removed"
 "${input_dir}"/me31b.read.1.adapterTrim.round2.fastq.gz
