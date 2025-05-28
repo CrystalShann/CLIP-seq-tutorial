@@ -122,6 +122,24 @@ cd ~/scratch
 git clone https://github.com/CrystalShann/CLIP-seq-tutorial.git
 ```
 
+If you are not demultiplexing the samples, you need to first move the random barcodes to the end of the read header for nextflow to run. First start by creating a python virtual environment on the server to install all the tools
+```bash
+module load python
+python-m venv ~/envs/tools
+source ~/envs/tools/bin/activate  # activate the environment every time you want to use it
+pip install umi_tools             # you only need to install the software once
+pip install biopython
+```
+
+Run umi_extract.sh first to extract the UMI to the header, and then run run_move_umi.sh to move the extracted UMI to the end of the header
+For the umi_extract.sh script, you need to change the input and output directory to reflect your own file path
+```bash
+for example, these lines needs to be changed to reflect your own file name
+output_dir="/home/crystal/scratch/clip-seq/me31b/UMI_moved"
+input_dir="/home/crystal/scratch/clip-seq/me31b/adapters_removed"
+"${input_dir}"/me31b.read.1.adapterTrim.round2.fastq.gz         # for this specific line, ${input_dir} is a variable that points to the input_dir you specified earlier. You only need to change the second part. (ie: if your file is named read1.fastq.gz, you can change this line to "${input_dir}"/read1.fastq.gz
+```
+
 ** NOTE: REMEMBER TO CHANGE THE DIRECTORIES TO REFLECT WHERE YOUR FILES ARE LOCATED BEFORE SUBMITTING JOBS
 
 1. To run ultraplex, we need to first prepare a csv file detailing the barcode. An example could be:
