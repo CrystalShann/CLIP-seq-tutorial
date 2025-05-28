@@ -170,7 +170,7 @@ NNNNGAATANNNNNN:Sample4_me31b_flag_fmr1_rnai
 ```
 To create a new file in terminal
 ```
-nanos samplesheet.csv
+nano samplesheet.csv
 ```
   
 2. To run nextflow, we need to first prepare a samplesheet (details can be found [here](https://nf-co.re/clipseq/1.0.0/docs/usage/))
