@@ -97,6 +97,11 @@ Now you can proceed with installing iCount-Mini within an conda environment. (Yo
 conda create --name icount-mini python=3.9
 # activate the environment everytime you want to use it
 conda activate icount-mini
+# this is the location where you will download a copy of the iCount Mini github page, right now the location is Desktop,
+# but you can change it to any file path you want
+cd Desktop/
+git clone https://github.com/ulelab/iCount-Mini.git
+cd iCount-Mini
 pip install --upgrade -r requirements-rtd.txt -e .
 ```
 
