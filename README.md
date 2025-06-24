@@ -130,7 +130,7 @@ git clone https://github.com/CrystalShann/CLIP-seq-tutorial.git
 If you are not demultiplexing the samples, you need to first move the random barcodes to the end of the read header for nextflow to run. First start by creating a python virtual environment on the server to install all the tools
 ```bash
 module load python
-python-m venv ~/envs/tools
+python -m venv ~/envs/tools
 source ~/envs/tools/bin/activate  # activate the environment every time you want to use it
 pip install umi_tools             # you only need to install the software once
 pip install biopython
