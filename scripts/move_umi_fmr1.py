@@ -2,8 +2,8 @@ import gzip
 from Bio import SeqIO
 
 # Input and output file paths (modify as needed)
-input_file = "/home/crystal/scratch/clip-seq/me31b/UMI_moved/me31b.read.1.adapterTrim.round2.umi_extracted.fastq.gz"
-output_file = "/home/crystal/scratch/clip-seq/me31b/UMI_moved/me31b.read.1.umi_moved.fastq.gz"
+input_file = "/home/crystal/scratch/clip-seq/replicate3/Fmr1/UMI_moved/Fmr1_CKDL250012622-1A_22T5WLLT4_L1.1.adapterTrim.umi_extracted.fastq.gz"
+output_file = "/home/crystal/scratch/clip-seq/replicate3/Fmr1/fmr1.read1.umi_moved.fastq.gz"
 
 def modify_header(input_file, output_file):
     with gzip.open(input_file, "rt") as infile, gzip.open(output_file, "wt") as outfile:
