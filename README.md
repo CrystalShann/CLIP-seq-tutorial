@@ -128,6 +128,15 @@ git clone https://github.com/CrystalShann/CLIP-seq-tutorial.git
 ```
 
 If you are not demultiplexing the samples, you need to first move the random barcodes to the end of the read header for nextflow to run. First start by creating a python virtual environment on the server to install all the tools
+
+First start by removing adapters by running adapter_trimming.sh 
+``` bash
+# install the software needed to remove adapters
+python -m venv ~/envs/cutadapt
+source ~/envs/cutadapt/bin/activate
+pip install cutadapt
+```
+
 ```bash
 module load python
 python -m venv ~/envs/tools
