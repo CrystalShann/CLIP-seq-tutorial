@@ -76,7 +76,7 @@ module load python/3.9.6
 python3.9 -m venv ~/envs/clippy
 source ~/envs/clippy/bin/activate
 pip install .
-pip install numpy pandas scipy matplotlib dash==1.20.0 dash-bootstrap-components==0.11.3 werkzeug==2.0.0 pybedtools numpydoc bs4 percy pytest pytest-cov pytest-selenium
+pip install numpy pandas scipy matplotlib dash==1.20.0 dash-bootstrap-components==0.11.3 werkzeug==2.0.0 pybedtools==0.8.0 numpydoc bs4 percy pytest pytest-cov pytest-selenium
 ```
 
 To install iCount-Mini
